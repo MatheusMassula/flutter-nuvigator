@@ -47,8 +47,11 @@ class RouteGenerator {
         break;
       
       case 'package-details':
-        if (args is Package) {
-          return MaterialPageRoute(builder: (context) => PackageDetailsScreen(package: args, producer: null));
+        if (args is Map) { // TODO: To me this could be improved by checking if the map constains the keys and if the values corresponds what is expected
+          return MaterialPageRoute(builder: (context) => PackageDetailsScreen(
+            package: args['package'],
+            producer: args['producer']
+          ));
         }
         return _errorRoute();
         break;
