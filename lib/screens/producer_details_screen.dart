@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nuvigator/next.dart';
 import 'package:proj/components/orgs_packages_card.dart';
 import 'package:proj/core/app_colors.dart';
 import 'package:proj/core/app_images.dart';
 import 'package:proj/models/package_model.dart';
 import 'package:proj/models/producer_model.dart';
-import 'package:proj/screens/package_details_screen.dart';
 
 class ProducerDetailsScreen extends StatelessWidget {
 
@@ -108,10 +108,9 @@ class ProducerDetailsScreen extends StatelessWidget {
       final pack = Package.fromJson(package);
 
       children.add(InkWell(
-        onTap: () => Navigator.pushNamed(
-          context,
+        onTap: () => Nuvigator.of(context).open(
           'package-details',
-          arguments: {
+          parameters: {
             'package': pack,
             'producer': producer
           }

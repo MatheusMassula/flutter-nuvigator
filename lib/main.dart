@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Nuvigator.routes(
         initialRoute: 'home',
+        screenType: materialScreenType,
         routes: [
           NuRouteBuilder(path: 'home', builder: (_, __, ___) => HomeScreen()),
           NuRouteBuilder(path: 'login', builder: (_, __, ___) => LoginScreen()),
