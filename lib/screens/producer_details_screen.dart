@@ -9,8 +9,11 @@ import 'package:proj/models/producer_model.dart';
 class ProducerDetailsScreen extends StatelessWidget {
 
   final Producer producer;
+  final Function(dynamic parameters) onPackageDetailsClick;
+
   ProducerDetailsScreen({
-    @required this.producer
+    @required this.producer,
+    @required this.onPackageDetailsClick
   });
 
   @override
@@ -108,13 +111,10 @@ class ProducerDetailsScreen extends StatelessWidget {
       final pack = Package.fromJson(package);
 
       children.add(InkWell(
-        onTap: () => Nuvigator.of(context).open(
-          'package-details',
-          parameters: {
-            'package': pack,
-            'producer': producer
-          }
-        ),
+        onTap: () => onPackageDetailsClick({
+          'package': pack,
+          'producer': producer
+        }),
         child: OrgsPackagesCard(
           title: pack.title,
           price: pack.price,

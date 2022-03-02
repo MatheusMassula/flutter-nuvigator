@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:nuvigator/next.dart';
 import 'package:proj/core/app_colors.dart';
 import 'package:proj/core/app_images.dart';
 
 class LoginScreen extends StatelessWidget {
+  final Function onSingUpClick;
+  final Function onHomeClick;
+
+  const LoginScreen({Key key, @required this.onSingUpClick, @required this.onHomeClick}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                     width: double.infinity
                 ),
                 child: ElevatedButton(
-                  onPressed: () => Nuvigator.of(context).open('home'),
+                  onPressed: () => onHomeClick(),
                   style: ElevatedButton.styleFrom(
                     primary: AppColors.green, // background
                     onPrimary: Colors.white, // foreground
@@ -75,11 +78,7 @@ class LoginScreen extends StatelessWidget {
                 vertical: 10,
               ),
               child: GestureDetector(
-                onTap: () => Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  'sing-up',
-                  (route) => false
-                ),
+                onTap: () => onSingUpClick(),
                 child: Container(
                   width: double.maxFinite,
                   padding: const EdgeInsets.all(8),

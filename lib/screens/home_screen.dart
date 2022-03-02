@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nuvigator/next.dart';
 import 'package:proj/components/orgs_highlights_card.dart';
 import 'package:proj/components/orgs_cards_list.dart';
 import 'package:proj/components/orgs_search_bar.dart';
@@ -12,6 +11,10 @@ import 'package:proj/models/producer_model.dart';
 import 'package:proj/repository/data.dart';
 
 class HomeScreen extends StatefulWidget {
+  final Function(dynamic parameters) onProducerDetailsClick;
+
+  const HomeScreen({Key key, @required this.onProducerDetailsClick}) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -140,10 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
       final prod = Producer.fromJson(producers[producer]);
 
       children.add(OrgsStoresCard(
-        action: () => Nuvigator.of(context).open(
-          'producer-details',
-          parameters: { 'producer': prod}
-        ),
+        action: () => widget.onProducerDetailsClick({ 'producer': prod }),
         img: prod.logo,
         distance: prod.distance,
         title: prod.name,
