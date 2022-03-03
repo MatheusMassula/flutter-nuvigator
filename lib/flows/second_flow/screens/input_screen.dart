@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class InputScreen extends StatelessWidget {
   InputScreen({
     Key key,
-    this.onNext,
+    @required this.onNext,
   }) : super(key: key);
 
   final Function(String text) onNext;

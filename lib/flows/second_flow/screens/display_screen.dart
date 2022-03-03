@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class DisplayScreen extends StatelessWidget {
   const DisplayScreen({
     Key key,
-    this.onClose,
-    this.text,
+    @required this.onClose,
+    @required this.text,
   }) : super(key: key);
 
   final Function() onClose;

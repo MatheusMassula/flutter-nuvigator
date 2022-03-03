@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class OneScreen extends StatelessWidget {
   const OneScreen({
     Key key,
-    this.onNext,
-    this.onClose,
+    @required this.onNext,
+    @required this.onClose,
   }) : super(key: key);
 
   final Function() onNext;
