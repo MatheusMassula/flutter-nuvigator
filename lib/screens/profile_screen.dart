@@ -6,6 +6,9 @@ import 'package:proj/core/app_images.dart';
 
 class ProfileScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final Function onClose;
+
+  ProfileScreen({Key key, this.onClose}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

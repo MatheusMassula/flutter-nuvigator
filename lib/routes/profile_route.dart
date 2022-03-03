@@ -4,7 +4,12 @@ import 'package:proj/screens/profile_screen.dart';
 
 class ProfileRoute extends NuRoute {
   @override
-  Widget build(BuildContext context, NuRouteSettings<Object> settings) => ProfileScreen();
+  Widget build(BuildContext context, NuRouteSettings<Object> settings) {
+    print('Received parameters: ${settings.rawParameters}');
+    return ProfileScreen(
+      onClose: () => nuvigator.pop('Your name is: ${settings.rawParameters['name']}')
+    );
+  }
 
   @override
   String get path => 'profile';

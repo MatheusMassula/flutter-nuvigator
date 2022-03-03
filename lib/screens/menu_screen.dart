@@ -41,7 +41,12 @@ class MenuScreen extends StatelessWidget {
               OrgsMenuCard(
                 text: 'Perfil',
                 icon: Icons.person,
-                action: () => Nuvigator.of(context).open('profile'),
+                action: () async {
+                  final result = await Nuvigator.of(context).open('myapp://profile?name=massula');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('$result'))
+                  );
+                },
               ),
               Divider(),
               OrgsMenuCard(
